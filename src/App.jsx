@@ -1,40 +1,42 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-// import './App.css'
-import logo from "./assets/logo.png"
-import NavItems from './components/Navitems'
+import { useState } from "react";
+import logo from "./assets/logo.png";
+import NavItems from "./components/Navitems";
 
 function App() {
-
+  const [activeTab, setActiveTab] = useState("Dashboard");
   const menu = [
     {
       title: "Dashboard",
-      link: "#"
+      link: "#",
     },
     {
       title: "Transfer",
-      link: "#"
+      link: "#",
     },
     {
       title: "Topup",
-      link: "#"
+      link: "#",
     },
     {
       title: "Signout",
-      link: "#"
+      link: "#",
     },
-  ]
+  ];
+
   return (
     <>
       <nav className="flex items-center w-screen justify-between bg-white py-4 px-8">
-        <img src={logo}/>
+        <img src={logo} />
         <div className="flex gap-x-8">
-          <NavItems menu={menu}/>
+          <NavItems
+            menu={menu}
+            activeTab={activeTab}
+            handleClick={setActiveTab}
+          />
         </div>
       </nav>
     </>
   );
 }
 
-export default App
+export default App;
