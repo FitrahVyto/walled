@@ -1,22 +1,28 @@
-// Destructuring
+import { useState } from "react";
 
-function NavItems({ menu, activeTab, handleClick }) {
-    return (
-      <div className="flex gap-x-8">
-        {menu.map((item, index) => (
+function NavItems({ menu }) {
+  const [activeTab, setActiveTab] = useState("Dashboard");
+
+  return (
+    <ul className="flex gap-x-8 text-black">
+      {menu.map((item) => {
+        return (
           <a
-            onClick={() => handleClick(item.title)}
-            className={
-              activeTab !== item.title ? "text-black" : "text[#19918F] font-bold"
-            }
-            key={index}
+            key={item.title}
             href={item.link}
+            className={`${
+              activeTab === item.title
+                ? "text-[#19918F] font-bold"
+                : "text-black"
+            }`}
+            onClick={() => setActiveTab(item.title)}
           >
             {item.title}
           </a>
-        ))}
-      </div>
-    );
-  }
-  
-  export default NavItems;
+        );
+      })}
+    </ul>
+  );
+}
+
+export default NavItems;
